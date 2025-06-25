@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 // 🔸 Particle หัวใจ
@@ -30,45 +30,6 @@ function drawHeart(ctx, x, y, size, alpha) {
   ctx.restore();
 }
 
-// ❤️ กรอบหัวใจแท้จริงด้วย SVG clipPath และรูปภาพใน SVG image
-const HeartFrame = ({ imageUrl }) => (
-  <div className="relative w-96 sm:w-[28rem] md:w-[34rem] lg:w-[40rem] aspect-square">
-    <svg
-      viewBox="0 0 200 200"
-      className="absolute w-full h-full z-10 pointer-events-none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <defs>
-        <clipPath id="heartClip" clipPathUnits="userSpaceOnUse">
-          <path d="M100 180s-70-40-70-90c0-30 30-40 50-20 20-20 50-10 50 20 0 50-70 90-70 90z" />
-        </clipPath>
-      </defs>
-
-      {/* กรอบหัวใจเรืองแสง */}
-      <path
-        d="M100 180s-70-40-70-90c0-30 30-40 50-20 20-20 50-10 50 20 0 50-70 90-70 90z"
-        fill="none"
-        stroke="#ec4899"
-        strokeWidth="8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="animate-pulse drop-shadow-[0_0_30px_rgba(236,72,153,0.9)]"
-      />
-
-      {/* รูปภาพในกรอบหัวใจ */}
-      {imageUrl && (
-        <image
-          href={imageUrl}
-          width="200"
-          height="200"
-          clipPath="url(#heartClip)"
-          preserveAspectRatio="xMidYMid slice"
-        />
-      )}
-    </svg>
-  </div>
-);
-
 const SecretMessage = () => {
   const [show, setShow] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
@@ -84,16 +45,14 @@ const SecretMessage = () => {
   const animationFrameId = useRef(null);
   const startDate = new Date(2025, 3, 14); // 14 เม.ย. 2568
 
-  // โหลดรูปภาพจาก URL จริง (ไม่ใช้ redirect) ทดสอบก่อน
+  // โหลดรูปภาพจาก URL แบบไม่ใช้ fetch
   useEffect(() => {
     const img = new Image();
-    img.crossOrigin = "anonymous"; // ป้องกัน CORS error
-    img.src =
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80";
+    img.src = "https://source.unsplash.com/800x800/?love,romantic";
     img.onload = () => setImageUrl(img.src);
   }, []);
 
-  // ⏳ อัปเดตเวลาที่ผ่านไปทุกวินาที
+  // ⏳ เวลาที่ผ่านไป
   useEffect(() => {
     const interval = setInterval(() => {
       const now = new Date();
@@ -107,7 +66,6 @@ const SecretMessage = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // ฟังก์ชัน animate พลุหัวใจ
   const animate = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -132,7 +90,6 @@ const SecretMessage = () => {
     }
   };
 
-  // สั่งเริ่ม animation เมื่อ particles มีค่า
   useEffect(() => {
     if (particles.current.length > 0) {
       animationFrameId.current = requestAnimationFrame(animate);
@@ -162,16 +119,65 @@ const SecretMessage = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-rose-50 py-20 text-center overflow-hidden px-6 flex flex-col items-center">
+    <div
+      className="relative flex flex-col items-center justify-center min-h-screen bg-rose-50 px-6 text-center overflow-hidden"
+      style={{ minHeight: "100vh" }}
+    >
       <h2 className="text-4xl font-bold mb-8 text-pink-600 font-cute tracking-wide">
         💕 Secret Message 💕
       </h2>
 
-      <div className="flex flex-col md:flex-row items-center gap-10 max-w-5xl w-full">
-        {imageUrl && <HeartFrame imageUrl={imageUrl} />}
+      <div className="flex flex-col md:flex-row items-center gap-10 max-w-5xl w-full justify-center">
+        {/* SVG แสดงรูปภาพในกรอบหัวใจ */}
+        <div className="max-w-sm w-full">
+          <svg
+            viewBox="0 0 200 200"
+            width="100%"
+            height="auto"
+            className="mx-auto block"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            <defs>
+              <clipPath id="heartMask">
+                <path
+                  d="M100 180
+                     C30 140, 30 90, 100 40
+                     C170 90, 170 140, 100 180Z"
+                />
+              </clipPath>
+            </defs>
 
-        {/* 💌 กล่องข้อความ */}
-        <div className="bg-white rounded-3xl shadow-xl p-8 flex-1 text-left max-w-xl">
+            {/* รูปภาพ */}
+            {imageUrl && (
+              <image
+                href={imageUrl}
+                x="0"
+                y="0"
+                width="200"
+                height="200"
+                preserveAspectRatio="xMidYMid slice"
+                clipPath="url(#heartMask)"
+              />
+            )}
+
+            {/* กรอบหัวใจ */}
+            <path
+              d="M100 180
+                  C30 140, 30 90, 100 40
+                  C170 90, 170 140, 100 180Z"
+              fill="none"
+              stroke="#ec4899"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="animate-pulse drop-shadow-[0_0_10px_rgba(236,72,153,0.8)]"
+            />
+          </svg>
+        </div>
+
+        {/* ข้อความ */}
+        <div className="bg-white rounded-3xl shadow-xl p-8 flex-1 max-w-xl text-left">
           {show ? (
             <>
               <p className="text-2xl text-rose-600 font-cute mb-4">
@@ -190,7 +196,7 @@ const SecretMessage = () => {
             </button>
           )}
 
-          {/* ⏳ เวลา */}
+          {/* เวลา */}
           <div className="mt-6 border-t border-pink-300 pt-6">
             <p className="text-lg text-pink-700 font-semibold mb-2">
               เวลาที่ผ่านมาตั้งแต่ 14 เมษายน 2568:
