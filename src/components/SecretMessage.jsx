@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import HeartImageClip from "./HeartImageClip";
 
 // 🔸 Particle หัวใจ
 const HeartParticle = (x, y) => ({
@@ -45,10 +46,10 @@ const SecretMessage = () => {
   const animationFrameId = useRef(null);
   const startDate = new Date(2025, 3, 14); // 14 เม.ย. 2568
 
-  // โหลดรูปภาพจาก URL แบบไม่ใช้ fetch
+  // โหลดรูปภาพ
   useEffect(() => {
     const img = new Image();
-    img.src = "https://source.unsplash.com/800x800/?love,romantic";
+    img.src = "https://picsum.photos/id/1025/400/300";
     img.onload = () => setImageUrl(img.src);
   }, []);
 
@@ -128,55 +129,8 @@ const SecretMessage = () => {
       </h2>
 
       <div className="flex flex-col md:flex-row items-center gap-10 max-w-5xl w-full justify-center">
-        {/* SVG แสดงรูปภาพในกรอบหัวใจ */}
-        <div className="max-w-sm w-full">
-          <svg
-            viewBox="0 0 200 200"
-            width="100%"
-            height="auto"
-            className="mx-auto block"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="xMidYMid meet"
-          >
-            <defs>
-              <clipPath id="heartMask">
-                <path
-                  d="M100 180
-                     C30 140, 30 90, 100 40
-                     C170 90, 170 140, 100 180Z"
-                />
-              </clipPath>
-            </defs>
+        {imageUrl && <HeartImageClip imageUrl={imageUrl} />}
 
-            {/* รูปภาพ */}
-            {imageUrl && (
-              <image
-                href={imageUrl}
-                x="0"
-                y="0"
-                width="200"
-                height="200"
-                preserveAspectRatio="xMidYMid slice"
-                clipPath="url(#heartMask)"
-              />
-            )}
-
-            {/* กรอบหัวใจ */}
-            <path
-              d="M100 180
-                  C30 140, 30 90, 100 40
-                  C170 90, 170 140, 100 180Z"
-              fill="none"
-              stroke="#ec4899"
-              strokeWidth="4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="animate-pulse drop-shadow-[0_0_10px_rgba(236,72,153,0.8)]"
-            />
-          </svg>
-        </div>
-
-        {/* ข้อความ */}
         <div className="bg-white rounded-3xl shadow-xl p-8 flex-1 max-w-xl text-left">
           {show ? (
             <>
@@ -196,7 +150,6 @@ const SecretMessage = () => {
             </button>
           )}
 
-          {/* เวลา */}
           <div className="mt-6 border-t border-pink-300 pt-6">
             <p className="text-lg text-pink-700 font-semibold mb-2">
               เวลาที่ผ่านมาตั้งแต่ 14 เมษายน 2568:
@@ -215,7 +168,6 @@ const SecretMessage = () => {
         </div>
       </div>
 
-      {/* 🎆 พลุหัวใจ */}
       <canvas
         ref={canvasRef}
         className="pointer-events-none fixed top-0 left-0 w-full h-full"
