@@ -3,10 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Itim&display=swap');
 
 body {
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Indie Flower', 'Itim', cursive, sans-serif;
   background-color: #fff0f5;
   position: relative;
   overflow-x: hidden;
