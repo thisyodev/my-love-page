@@ -1,0 +1,36 @@
+{
+  "name": "my-love-page",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "aos": "^2.3.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-howler": "^3.1.0",
+    "react-icons": "^4.12.0",
+    "react-scripts": "5.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.2",
+    "postcss": "^8.4.21",
+    "ajv": "^8.12.0",
+    "ajv-keywords": "^5.1.0",
+    "autoprefixer": "^10.4.17"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

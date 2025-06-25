@@ -1,0 +1,21 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+body {
+  font-family: 'Indie Flower', cursive;
+  background-color: #fff0f5;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.text-rose-500 {
+  color: #e11d48;
+}
+
+.font-cute {
+  font-family: 'Indie Flower', cursive;
+}
