@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "aos": "^2.3.4",
+    "framer-motion": "^12.19.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-howler": "^3.1.0",
@@ -15,11 +16,11 @@
     "build": "react-scripts build"
   },
   "devDependencies": {
-    "tailwindcss": "^3.3.2",
-    "postcss": "^8.4.21",
     "ajv": "^8.12.0",
     "ajv-keywords": "^5.1.0",
-    "autoprefixer": "^10.4.17"
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.3.2"
   },
   "browserslist": {
     "production": [
