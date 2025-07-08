@@ -44,7 +44,7 @@ const PinLock = ({ onUnlock }) => {
         <h1 className="text-2xl font-bold text-center mb-2">
           🔐 Anniversary’s Lock
         </h1>
-        <p className="text-center text-gray-600 mb-6 text-sm">
+        <p className="font-kanit text-center text-gray-600 mb-6 text-sm">
           “วันครบรอบที่ทำให้เรารู้ว่า...”
         </p>
 
@@ -91,7 +91,7 @@ const PinLock = ({ onUnlock }) => {
 
           {success && (
             <motion.div
-              className="text-green-500 mt-4 text-center text-lg font-semibold"
+              className="text-green-500 mt-4 text-center text-lg font-kanit font-semibold"
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1.3, opacity: 1 }}
               exit={{ opacity: 0 }}

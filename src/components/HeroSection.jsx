@@ -9,9 +9,12 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div className="py-24 bg-gradient-to-r from-pink-300 to-pink-500 text-white" data-aos="fade-down">
-      <h1 className="text-5xl font-extrabold mb-4">🌸 To My Dearest Love 🌸</h1>
-      <p className="text-xl">You are my sunshine, my only sunshine 💕</p>
+    <div
+      className="py-24 bg-gradient-to-r from-pink-300 to-pink-500 text-white"
+      data-aos="fade-down"
+    >
+      <h1 className="text-5xl font-extrabold mb-4">🌸 Happy Anniversary 🌸</h1>
+      {/* <p className="text-xl">You are my sunshine, my only sunshine 💕</p> */}
     </div>
   );
 };

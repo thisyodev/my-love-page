@@ -7,6 +7,7 @@ import MusicPlayer from "./components/MusicPlayer";
 import FloatingHearts from "./components/FloatingHearts";
 import SecretMessage from "./components/SecretMessage";
 import PinLock from "./components/PinLock"; // ✅ เพิ่มเข้ามา
+import LoveChecklist from "./components/LoveChecklist";
 
 const App = () => {
   const [unlocked, setUnlocked] = useState(false);
@@ -23,6 +24,7 @@ const App = () => {
           <Gallery />
           <LoveNotes />
           <SecretMessage />
+          <LoveChecklist />
           <Footer />
         </div>
       )}
