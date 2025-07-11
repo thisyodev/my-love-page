@@ -1,8 +1,11 @@
 
 const notes = [
+  "Always caring about the little things 💖",
   "You make my world brighter every day 💡",
   "Your smile is my favorite thing 😊",
-  "You're my best friend and soulmate 💞",
+  "Thank you for taking care of me. 💞",
+  "You love taking me out for delicious food. 🍕",
+  "We talk things through and keep it real. 🤝",
 ];
 
 const LoveNotes = () => (

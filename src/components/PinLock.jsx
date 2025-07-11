@@ -97,7 +97,7 @@ const PinLock = ({ onUnlock }) => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4 }}
             >
-              🎉 รหัสถูกต้อง! ยินดีต้อนรับ 💖
+              🎉 140425 💖
             </motion.div>
           )}
         </AnimatePresence>

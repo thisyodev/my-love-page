@@ -154,7 +154,7 @@ const SecretMessage = () => {
               I just want to say...
             </p>
             <p className="text-xl sm:text-2xl md:text-3xl font-extrabold text-pink-600 mb-5 leading-snug sm:leading-relaxed">
-              You mean the world to me. 💖
+              I love you for who I am when I’m with you. 💖
             </p>
           </motion.div>
         ) : (
@@ -168,7 +168,7 @@ const SecretMessage = () => {
 
         <div className="mt-4 border-t border-pink-300 pt-4">
           <p className="text-sm sm:text-base text-pink-700 font-semibold mb-2">
-            เวลาที่ผ่านมาตั้งแต่ 14 เมษายน 2568:
+            Time Since April 14, 2025:
           </p>
           <motion.div
             className="text-lg sm:text-xl md:text-2xl font-extrabold text-pink-500 select-none leading-tight"
