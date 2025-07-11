@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const CORRECT_PIN = "040425";
+const CORRECT_PIN = "140425";
 
 const PinLock = ({ onUnlock }) => {
   const [pin, setPin] = useState("");
